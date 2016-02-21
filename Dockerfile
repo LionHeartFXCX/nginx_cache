@@ -35,7 +35,7 @@ RUN ./configure --with-pcre=${NGINX_PATH}/download/pcre-${PCRE_VERSION} \
                 --with-zlib=${NGINX_PATH}/download/zlib-${ZLIB_VERSION} \
                 --with-openssl=${NGINX_PATH}/download/openssl-${OPENSSL_VERSION} \
                 --with-http_ssl_module \
-                --add-module=${NGINX_PATH}/download/ngx_cache_purge-${NGX_CACHE_PURGE}
+                --add-module=${NGINX_PATH}/download/ngx_cache_purge-${NGX_CACHE_PURGE} \
  && make \
  && make install
 
