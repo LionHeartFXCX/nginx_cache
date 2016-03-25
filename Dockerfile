@@ -37,6 +37,5 @@ RUN ./configure --with-pcre=${NGINX_PATH}/download/pcre-${PCRE_VERSION}
                 --add-module=${NGINX_PATH}/download/ngx_cache_purge-${NGX_CACHE_PURGE}
 RUN make
 RUN make install
-RUN rm -rf ${NGINX_PATH}
 
 EXPOSE 80
