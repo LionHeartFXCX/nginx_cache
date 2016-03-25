@@ -6,11 +6,11 @@ ENV NGINX_PATH=/nginx \
     NGINX_VERSION=1.8.1 \
     PCRE_VERSION=8.37 \
     ZLIB_VERSION=1.2.8 \
-    OPENSSL_VERSION=1.0.2f \
+    OPENSSL_VERSION=1.0.2g \
     NGX_CACHE_PURGE=2.3
 
 RUN apt-get update && apt-get install -y \
-    build-essential \
+    g++ \
     gcc \
     make \
     wget \
@@ -41,3 +41,5 @@ RUN wget "http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz" -P ${NGINX_PA
  && rm -rf ${NGINX_PATH}
 
 EXPOSE 80
+
+ENTRYPOINT ["/usr/local/nginx/sbin/nginx"]
