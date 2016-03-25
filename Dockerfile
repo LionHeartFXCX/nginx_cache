@@ -30,10 +30,10 @@ RUN tar zxvf ${NGINX_PATH}/download/openssl-${OPENSSL_VERSION}.tar.gz -C ${NGINX
 RUN tar zxvf ${NGINX_PATH}/download/pcre-${PCRE_VERSION}.tar.gz -C ${NGINX_PATH}/download
 RUN tar zxvf ${NGINX_PATH}/download/zlib-${ZLIB_VERSION}.tar.gz -C ${NGINX_PATH}/download
 RUN tar zxvf ${NGINX_PATH}/download/ngx_cache_purge-${NGX_CACHE_PURGE}.tar.gz -C ${NGINX_PATH}/download
-RUN ./configure --with-pcre=${NGINX_PATH}/download/pcre-${PCRE_VERSION}
-                --with-zlib=${NGINX_PATH}/download/zlib-${ZLIB_VERSION}
-                --with-openssl=${NGINX_PATH}/download/openssl-${OPENSSL_VERSION}
-                --with-http_ssl_module
+RUN ./configure --with-pcre=${NGINX_PATH}/download/pcre-${PCRE_VERSION} \
+                --with-zlib=${NGINX_PATH}/download/zlib-${ZLIB_VERSION} \
+                --with-openssl=${NGINX_PATH}/download/openssl-${OPENSSL_VERSION} \
+                --with-http_ssl_module \
                 --add-module=${NGINX_PATH}/download/ngx_cache_purge-${NGX_CACHE_PURGE}
 RUN make
 RUN make install
