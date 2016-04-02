@@ -1,24 +1,29 @@
 FROM ubuntu
 
-MAINTAINER LionHeart <LionHeart_fxc@163.com>
-
+#set the environment arguments
 ENV NGINX_PATH=/nginx \
+    NGINX_BASE_PATH=/data \
     NGINX_VERSION=1.8.1 \
     PCRE_VERSION=8.37 \
     ZLIB_VERSION=1.2.8 \
     OPENSSL_VERSION=1.0.2g \
     NGX_CACHE_PURGE=2.3
 
+#get all the dependences
 RUN apt-get update && apt-get install -y \
     g++ \
     gcc \
     make \
     wget \
- && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/* \
+ && apt-get clean
 
+#create the dir 
 RUN mkdir -p ${NGINX_PATH}/nginx \
- && mkdir -p ${NGINX_PATH}/download
+ && mkdir -p ${NGINX_PATH}/download \
+ && mkdir ${NGINX_BASE_PATH}
 
+#compile the nginx
 WORKDIR ${NGINX_PATH}/nginx/nginx-${NGINX_VERSION}
 
 RUN wget "http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz" -P ${NGINX_PATH}/nginx \
@@ -43,3 +48,5 @@ RUN wget "http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz" -P ${NGINX_PA
 EXPOSE 80
 
 ENTRYPOINT ["/usr/local/nginx/sbin/nginx"]
+
+MAINTAINER LionHeart <LionHeart_fxc@163.com>
