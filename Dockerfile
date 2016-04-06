@@ -47,6 +47,6 @@ RUN wget "http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz" -P ${NGINX_PA
 
 EXPOSE 80
 
-ENTRYPOINT ["/usr/local/nginx/sbin/nginx","-g","daemon off"]
+ENTRYPOINT ["/usr/local/nginx/sbin/nginx","-g","daemon off;"]
 
 MAINTAINER LionHeart <LionHeart_fxc@163.com>
